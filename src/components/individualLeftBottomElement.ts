@@ -1,5 +1,5 @@
 import { html, svg } from "lit";
-import { PowerFlowCardPlus } from "../power-flow-card-plus";
+import { PowerFlowCardPlus } from "../power-flow-card-plus-conditional";
 import { PowerFlowCardPlusConfig } from "../power-flow-card-plus-config";
 import { IndividualObject } from "../states/raw/individual/getIndividualObject";
 import { NewDur, TemplatesObj } from "../type";

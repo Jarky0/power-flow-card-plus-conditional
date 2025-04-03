@@ -1,4 +1,4 @@
-# Power Flow Card Plus
+# Power Flow Card Plus Conditional
 
 [![ko-fi support](https://img.shields.io/badge/support-me-ff5e5b?style=flat-square&logo=ko-fi)](https://ko-fi.com/flixlix)
 [![hacs_badge](https://img.shields.io/badge/HACS-Default-41BDF5.svg?style=flat-square)](https://github.com/hacs/integration)
@@ -53,30 +53,30 @@ If this is your goal, check out the [Energy Flow Card Plus](https://github.com/f
 
 In case you want to watch a tutorial instead of reading through this very long readme 😅, I recommend the following videos:
 
-- [Power Flow Card Plus in Home Assistant - Jetzt noch besser? Anleitung from Smartzeug](https://youtu.be/PUOU5qdhMro) - _in german_, up to date with version 0.2.2
-- [Power Flow Card Plus for Home Assistant from Speak to the Geek](https://youtu.be/C4Zh35E9wJE?si=REuWZxmfF91G0Ht7) - _changes in indvidual configuration_
+- [Power Flow Card Plus Conditional in Home Assistant - Jetzt noch besser? Anleitung from Smartzeug](https://youtu.be/PUOU5qdhMro) - _in german_, up to date with version 0.2.2
+- [Power Flow Card Plus Conditional for Home Assistant from Speak to the Geek](https://youtu.be/C4Zh35E9wJE?si=REuWZxmfF91G0Ht7) - _changes in indvidual configuration_
 
 ## Installation
 
 ### HACS (recommended)
 
 This card is directly available through [HACS](https://hacs.xyz). To install HACS, follow these [instructions](https://hacs.xyz/docs/setup/prerequisites).
-After having HACS installed, simply search for "Power Flow Card Plus" and download it using the UI 🙂
+After having HACS installed, simply search for "Power Flow Card Plus Conditional" and download it using the UI 🙂
 
 <details>
 <summary>Manual install</summary>
 
-1. Download and copy `power-flow-card-plus.js` from the [latest release](https://github.com/flixlix/power-flow-card-plus/releases/latest) into your `config/www` directory.
+1. Download and copy `power-flow-card-plus-conditional.js` from the [latest release](https://github.com/flixlix/power-flow-card-plus/releases/latest) into your `config/www` directory.
 
 2. Add the resource reference as decribed below.
 
 ### Add resource reference
 
-If you configure Dashboards via YAML, add a reference to `power-flow-card-plus.js` inside your `configuration.yaml`:
+If you configure Dashboards via YAML, add a reference to `power-flow-card-plus-conditional.js` inside your `configuration.yaml`:
 
 ```yaml
 resources:
-  - url: /local/power-flow-card-plus.js
+  - url: /local/power-flow-card-plus-conditional.js
     type: module
 ```
 
@@ -87,8 +87,8 @@ Else, if you prefer the graphical editor, use the menu to add the resource:
 3. Click three dot icon
 4. Select Resources
 5. Hit (+ ADD RESOURCE) icon
-6. Enter URL `/local/power-flow-card-plus.js` and select type "JavaScript Module".
-   (Use `/hacsfiles/power-flow-card-plus/power-flow-card-plus.js` and select "JavaScript Module" for HACS install if HACS didn't do it already)
+6. Enter URL `/local/power-flow-card-plus-conditional.js` and select type "JavaScript Module".
+   (Use `/hacsfiles/power-flow-card-plus-conditional/power-flow-card-plus-conditional.js` and select "JavaScript Module" for HACS install if HACS didn't do it already)
 
 </details>
 
@@ -415,7 +415,7 @@ min_flow_rate: 0.9
 max_flow_rate: 6
 watt_threshold: 10000
 clickable_entities: true
-title: Power Flow Card Plus
+title: Power Flow Card Plus Conditional
 ```
 
 This should give you something like this:
@@ -486,51 +486,4 @@ max - (value / totalLines) * (max - min);
 
 ### New Flow Formula
 
-In contrast to the old flow formula, this formula calculates the flow rate independently from other lines, making it more intuitive to interpret the perceived power. This means that a state of `10W` will always flow with the same velocity, no matter what other lines are doing. In other words this flow rate is calculated in absolute and not relative values.
-
-To get this new Flow Formula to work, simply set `use_new_flow_rate_model` in the main configuration to true. You may want to play around with the `max_expected_power`, `min_expected_power`, `max_flow_rate` and `min_flow_rate` to get the speeds that you wish
-
-```js
-if (value > maxIn) return maxOut; // In case power exceeds maximum expected power, use the fastest speed and ignore the rest.
-return ((value - minIn) * (maxOut - minOut)) / (maxIn - minIn) + minOut;
-
-// value = value of the current line to calculate (eg: grid to home)
-//
-// minIn = amount of watts at which the lowest speed will be selected.
-//   ↳ In your configuration this is `min_expected_power`
-//   ↳ eg: setting this at `100` means that at `100` watts, the dots will still flow at the lowest speed
-// maxIn = amount of watts at which the highest speed will be selected.
-//   ↳ In your configuration this is `max_expected_power`
-//   ↳ eg: setting this at `2000` means that everything more than `2000` will flow at the highest speed selected
-//
-// minOut = amount of watts at which the lowest speed will be selected.
-//   ↳ In your configuration this is `max_flow_rate`
-//   ↳ eg: setting this at `5` means that one dot will take `5` second to travel
-// maxOut = amount of watts at which the highest speed will be selected.
-//   ↳ In your configuration this is `min_flow_rate`
-//   ↳ eg: setting this at `1` means that one dot will take `1` second to travel
-```
-
-The following video aims to show the diffence between the two flow formulas:
-
-<https://user-images.githubusercontent.com/61006057/231479254-91d6c625-8f38-4abb-b9ba-8dd24d6395f3.mp4>
-
-Notice that when the Power changes to only coming from the sun, the old formula accelerates to maintain a constant amount of dots/second.
-Using the new formula is more intuitive, since you can immediately see that the Solar Power is relatively low since the dots are flowing very slowly.
-On the old Flow Formula you might think that the sun is producing a lot of power, which in this case is not true.
-
-At the end of the day these are two options and depending on what you're interested, one might suit you better than the other, that's why I kept the old formula, you have the choice. 🙂
-
-### To-Do List
-
-Here is my to-do list containing a few enhancements I am planning in adding. The ones at the top are bigger priorities, so they'll probably be available before the ones at the bottom.
-
-- [x] Change Tap Action Behavior to be compatible with Browser Mod
-- Fill the circles [#89](https://github.com/flixlix/power-flow-card-plus/issues/89)
-- [x] More than two Individual Devices [#54](https://github.com/flixlix/power-flow-card-plus/issues/54)
-- More than one solar source [#23](https://github.com/flixlix/power-flow-card-plus/issues/23)
-- Display Connected/Disconnected status [#111](https://github.com/flixlix/power-flow-card-plus/issues/111)
-- Grid Feed In Circle [#119](https://github.com/flixlix/power-flow-card-plus/issues/119)
-- Improve performance [#144](https://github.com/flixlix/power-flow-card-plus/issues/144)
-
-I am still just one person working on this project and obviously have other things going on in my life, so feel free to contribute to the project. You can also feel free to create a PR with a new feature and I'll try my best to review it 😊
+In contrast to the old flow formula, this formula calculates the flow rate independently from other lines, making it more intuitive to interpret the perceived power. This means that a state of `

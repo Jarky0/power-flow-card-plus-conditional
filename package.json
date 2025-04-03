@@ -1,6 +1,6 @@
 {
   "name": "power-flow-card-plus-conditional",
-  "version": "0.2.10",
+  "version": "0.2.11",
   "description": "A power flow card for Home Assistant with conditional visibility for individual devices",
   "keywords": [
     "home-assistant",
@@ -12,14 +12,14 @@
   "main": "index.js",
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/Jarky0/power-flow-card-plus.git"
+    "url": "git+https://github.com/Jarky0/power-flow-card-plus-conditional.git"
   },
   "author": "",
   "license": "ISC",
   "bugs": {
-    "url": "https://github.com/Jarky0/power-flow-card-plus/issues"
+    "url": "https://github.com/Jarky0/power-flow-card-plus-conditional/issues"
   },
-  "homepage": "https://github.com/Jarky0/power-flow-card-plus#readme",
+  "homepage": "https://github.com/Jarky0/power-flow-card-plus-conditional#readme",
   "scripts": {
     "build": "rollup -c",
     "lint": "eslint src/*",

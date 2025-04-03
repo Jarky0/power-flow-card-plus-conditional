@@ -1,4 +1,4 @@
-import { PowerFlowCardPlus } from "../power-flow-card-plus";
+import { PowerFlowCardPlus } from "../power-flow-card-plus-conditional";
 import { ConfigEntities } from "../power-flow-card-plus-config";
 import { IndividualObject } from "../states/raw/individual/getIndividualObject";
 import { IndividualDeviceType } from "../type";

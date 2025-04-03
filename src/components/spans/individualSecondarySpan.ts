@@ -1,6 +1,6 @@
 import { HomeAssistant } from "custom-card-helpers";
 import { html } from "lit";
-import { PowerFlowCardPlus } from "@/power-flow-card-plus";
+import { PowerFlowCardPlus } from "@/power-flow-card-plus-conditional";
 import { TemplatesObj } from "@/type";
 import { displayValue } from "@/utils/displayValue";
 import { isNumberValue } from "@/utils/utils";

@@ -1,5 +1,5 @@
 import { html } from "lit";
-import { PowerFlowCardPlus } from "../power-flow-card-plus";
+import { PowerFlowCardPlus } from "../power-flow-card-plus-conditional";
 import { ConfigEntities, PowerFlowCardPlusConfig } from "../power-flow-card-plus-config";
 import { generalSecondarySpan } from "./spans/generalSecondarySpan";
 import { displayValue } from "../utils/displayValue";

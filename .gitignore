@@ -9,6 +9,7 @@
 /node_modules/
 /npm-debug.log
 .pnpm-debug.log
+pnpm-lock.yaml
 
 ## testing
 /coverage/
@@ -20,14 +21,25 @@ test/screenshots/**/failed
 
 # build
 _site/
-# /dist/
+/dist/
+/release/
+/releases/
 /out-tsc/
 /.rollup.cache/
 .tsbuildinfo
 
+# build artifacts
+*.zip
+*.js.map
+*.d.ts
+
+# log files
+*.log
+home-assistant*.log
+
+# storybook
 storybook-static
 custom-elements.json
-# pnpm-lock.yaml
 
 # project overview
 .overview.md
