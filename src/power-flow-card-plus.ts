@@ -55,7 +55,7 @@ registerCustomCard({
 });
 
 @customElement("power-flow-card-plus-conditional")
-export class PowerFlowCardPlus extends LitElement {
+export class PowerFlowCardPlusConditional extends LitElement {
   @property({ attribute: false }) public hass!: HomeAssistant;
   @state() private _config = {} as PowerFlowCardPlusConfig;
 
