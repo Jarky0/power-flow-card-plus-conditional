@@ -6,7 +6,7 @@ import { individualDevicesSchema } from "../schema/_schema-all";
 import localize from "@/localize/localize";
 import { IndividualDeviceType } from "@/type";
 import { PowerFlowCardPlusConfig } from "@/power-flow-card-plus-config";
-import "./individual-row-editor";
+import "./individual-row-editor-conditional";
 
 export interface GUIModeChangedEvent {
   guiMode: boolean;
@@ -60,14 +60,14 @@ export class IndividualDevicesEditor extends LitElement {
     }
 
     return html`
-      <individual-row-editor
+      <individual-row-editor-conditional
         .hass=${this.hass}
         .config=${this.config}
         .entities=${this._configEntities || []}
         @open-sub-element-editor=${this._editDetailElement}
         @entities-changed=${this._entitiesChanged}
         style="width: 100%;"
-      ></individual-row-editor>
+      ></individual-row-editor-conditional>
     `;
   }
 
