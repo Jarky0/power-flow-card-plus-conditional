@@ -782,3 +782,6 @@ function sortIndividualObjects(individualObjs: IndividualObject[]) {
     .reverse();
   return sorted;
 }
+
+// Alias für Rückwärtskompatibilität mit bestehenden Komponenten-Imports
+export { PowerFlowCardPlusConditional as PowerFlowCardPlus };

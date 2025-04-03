@@ -24,11 +24,6 @@ export default [
     input: ["src/power-flow-card-plus.ts"],
     output: [
       {
-        dir: "dist",
-        format: "es",
-        inlineDynamicImports: true,
-      },
-      {
         file: "dist/power-flow-card-plus-conditional.js",
         format: "es",
         inlineDynamicImports: true,
