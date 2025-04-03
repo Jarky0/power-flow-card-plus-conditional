@@ -24,12 +24,12 @@ export default [
     input: ["src/power-flow-card-plus.ts"],
     output: [
       {
-        file: "dist/power-flow-card-plus-conditional.js",
+        file: "dist/power-flow-card-plus.js",
         format: "es",
         inlineDynamicImports: true,
       },
       {
-        file: "release/power-flow-card-plus-conditional.js",
+        file: "release/power-flow-card-plus.js",
         format: "es",
         inlineDynamicImports: true,
       },
