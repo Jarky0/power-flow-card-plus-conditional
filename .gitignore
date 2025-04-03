@@ -32,6 +32,9 @@ _site/
 # aber nicht das dist-repo Verzeichnis
 !/dist-repo/
 
+# aber nicht die Haupt-JS-Datei im Root
+!power-flow-card-plus-conditional.js
+
 # build artifacts
 *.zip
 *.js.map
