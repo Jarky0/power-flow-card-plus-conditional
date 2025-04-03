@@ -10,12 +10,12 @@ module.exports = {
       {
         replacements: [
           {
-            files: ["dist/power-flow-card-plus.js"],
-            from: /Power Flow Card Plus v(\d+\.\d+\.\d+)/,
-            to: "Power Flow Card Plus v${nextRelease.version}",
+            files: ["dist/power-flow-card-plus-conditional.js"],
+            from: /Power Flow Card Plus Conditional v(\d+\.\d+\.\d+)/,
+            to: "Power Flow Card Plus Conditional v${nextRelease.version}",
             results: [
               {
-                file: "dist/power-flow-card-plus.js",
+                file: "dist/power-flow-card-plus-conditional.js",
                 hasChanged: true,
                 numMatches: 2,
                 numReplacements: 2,
@@ -30,7 +30,7 @@ module.exports = {
     [
       "@semantic-release/git",
       {
-        assets: ["CHANGELOG.md", "README.md", "package.json", "pnpm-lock.yaml"],
+        assets: ["CHANGELOG.md", "README.md", "package.json"],
       },
     ],
     [
