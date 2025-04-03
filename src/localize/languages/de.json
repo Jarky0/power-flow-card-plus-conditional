@@ -75,6 +75,9 @@
     "grey_color": "Graue Farbe",
     "tap_action": "Aktion beim Antippen",
     "navigation_path": "Navigationspfad",
-    "sort_individual_devices": "Individuelle Geräte sortieren"
+    "sort_individual_devices": "Individuelle Geräte sortieren",
+    "conditional_visibility": "Bedingte Sichtbarkeit",
+    "visibility_entity": "Sichtbarkeits-Entität",
+    "invert": "Bedingung umkehren"
   }
 }

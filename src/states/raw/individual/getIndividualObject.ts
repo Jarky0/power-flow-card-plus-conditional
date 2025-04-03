@@ -70,7 +70,37 @@ export const getIndividualObject = (hass: HomeAssistant, field: IndividualDevice
   const state = getIndividualState(hass, field);
   const displayZero = field?.display_zero || false;
   const displayZeroTolerance = field?.display_zero_tolerance || 0;
-  const has = hasIndividualObject(displayZero, state, displayZeroTolerance);
+  
+  // Check for conditional visibility
+  let isVisible = true;
+  if (field.conditional_visibility?.entity) {
+    const visibilityEntity = field.conditional_visibility.entity;
+    const visibilityState = hass.states[visibilityEntity]?.state;
+    const requiredState = field.conditional_visibility.state;
+    const invertCondition = field.conditional_visibility.invert || false;
+    
+    if (!requiredState) {
+      // If no state is specified, just check if the entity exists and has any valid state
+      isVisible = !!visibilityState && visibilityState !== "unavailable" && visibilityState !== "unknown";
+    } else if (Array.isArray(requiredState)) {
+      // Check if the current state matches any of the states in the array
+      isVisible = requiredState.includes(visibilityState);
+    } else if (requiredState.includes(',')) {
+      // Handle comma-separated list of states from the text input field
+      const stateArray = requiredState.split(',').map(s => s.trim());
+      isVisible = stateArray.includes(visibilityState);
+    } else {
+      // Check if the current state matches the required state
+      isVisible = visibilityState === requiredState;
+    }
+    
+    // Invert the visibility condition if requested
+    if (invertCondition) {
+      isVisible = !isVisible;
+    }
+  }
+  
+  const has = isVisible && hasIndividualObject(displayZero, state, displayZeroTolerance);
   const isStateNegative = state && state < 0;
   const userConfiguredInvertAnimation = field?.inverted_animation || false;
   const invertAnimation = isStateNegative ? !userConfiguredInvertAnimation : userConfiguredInvertAnimation;

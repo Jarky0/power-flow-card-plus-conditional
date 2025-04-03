@@ -436,6 +436,41 @@ This should give you something like this:
 
 ![ui-editor](https://github.com/flixlix/power-flow-card-plus/assets/61006057/a5d0cbb4-f430-4ba0-9c6f-8c93689206d7)
 
+### Conditional Visibility for Individual Devices
+
+You can conditionally hide or show individual devices based on the state of a sensor. This is useful for showing devices only under certain conditions, such as:
+
+- Showing EV charging only when the car is actually charging
+- Showing pool equipment only during pool season
+- Showing HVAC only when it's actually running
+
+To configure conditional visibility for an individual device:
+
+```yaml
+type: custom:power-flow-card-plus
+entities:
+  # ... other entities ...
+  individual:
+    - entity: sensor.car_power
+      icon: mdi:car-electric
+      name: EV Car
+      # Conditional visibility configuration
+      conditional_visibility:
+        entity: binary_sensor.car_charging  # The entity that determines visibility
+        state: "on"                         # Show only when state is "on" (optional)
+        invert: false                       # Set to true to invert the condition (optional)
+```
+
+You can also use a comma-separated list of states to match multiple states:
+
+```yaml
+conditional_visibility:
+  entity: sensor.car_status
+  state: "charging,connected,finishing"  # Show when state is any of these values
+```
+
+If you leave the state empty, it will show the device as long as the entity exists and has a valid state (not "unavailable" or "unknown").
+
 ### Flow Formula
 
 This formula is based on the official formula used by the Energy Distribution card.
@@ -488,7 +523,7 @@ At the end of the day these are two options and depending on what you're interes
 
 ### To-Do List
 
-Here is my to-do list containing a few enhancements I am planning in adding. The ones at the top are bigger priorities, so they’ll probably be available before the ones at the bottom.
+Here is my to-do list containing a few enhancements I am planning in adding. The ones at the top are bigger priorities, so they'll probably be available before the ones at the bottom.
 
 - [x] Change Tap Action Behavior to be compatible with Browser Mod
 - Fill the circles [#89](https://github.com/flixlix/power-flow-card-plus/issues/89)

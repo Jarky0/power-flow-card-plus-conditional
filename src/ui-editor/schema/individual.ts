@@ -66,6 +66,30 @@ const mainSchema = {
       label: "Use Metadata",
       selector: { boolean: {} },
     },
+    {
+      name: "conditional_visibility",
+      label: "Conditional Visibility",
+      type: "expandable",
+      schema: [
+        {
+          name: "entity",
+          label: "Visibility Entity",
+          selector: { entity: {} },
+        },
+        {
+          name: "state",
+          label: "Required State (optional)",
+          selector: { text: {} },
+          description: "State value or comma-separated list of states (leave empty to just check if entity exists)",
+        },
+        {
+          name: "invert",
+          label: "Invert Condition",
+          selector: { boolean: {} },
+          description: "Show device when condition is NOT met",
+        },
+      ],
+    },
   ],
 };
 
