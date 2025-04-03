@@ -1,6 +1,6 @@
 {
   "name": "power-flow-card-plus-conditional",
-  "version": "0.2.8",
+  "version": "0.2.9",
   "description": "A power flow card for Home Assistant with conditional visibility for individual devices",
   "keywords": [
     "home-assistant",
