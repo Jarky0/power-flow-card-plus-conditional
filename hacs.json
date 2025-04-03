@@ -2,5 +2,5 @@
   "name": "Power Flow Card Plus Conditional",
   "render_readme": true,
   "homeassistant": "2023.12.3",
-  "filename": "power-flow-card-plus-conditional.js"
+  "filename": "dist-repo/power-flow-card-plus-conditional.js"
 }

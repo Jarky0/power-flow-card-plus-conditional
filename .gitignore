@@ -29,6 +29,9 @@ _site/
 /.rollup.cache/
 .tsbuildinfo
 
+# aber nicht das dist-repo Verzeichnis
+!/dist-repo/
+
 # build artifacts
 *.zip
 *.js.map
