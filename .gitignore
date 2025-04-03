@@ -43,3 +43,7 @@ custom-elements.json
 
 # project overview
 .overview.md
+power-flow-card-plus-conditional*.zip
+
+# workflow documentation
+RELEASE_WORKFLOW.md
