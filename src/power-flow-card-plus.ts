@@ -48,13 +48,13 @@ import { coerceNumber } from "./utils/utils";
 const circleCircumference = 238.76104;
 
 registerCustomCard({
-  type: "power-flow-card-plus",
-  name: "Power Flow Card Plus",
+  type: "power-flow-card-plus-conditional",
+  name: "Power Flow Card Plus Conditional",
   description:
-    "An extended version of the power flow card with richer options, advanced features and a few small UI enhancements. Inspired by the Energy Dashboard.",
+    "An extended version of the power flow card with conditional visibility for individual devices. Based on Power Flow Card Plus.",
 });
 
-@customElement("power-flow-card-plus")
+@customElement("power-flow-card-plus-conditional")
 export class PowerFlowCardPlus extends LitElement {
   @property({ attribute: false }) public hass!: HomeAssistant;
   @state() private _config = {} as PowerFlowCardPlusConfig;
@@ -106,7 +106,7 @@ export class PowerFlowCardPlus extends LitElement {
   // do not use ui editor for now, as it is not working
   public static async getConfigElement(): Promise<LovelaceCardEditor> {
     await import("./ui-editor/ui-editor");
-    return document.createElement("power-flow-card-plus-editor");
+    return document.createElement("power-flow-card-plus-conditional-editor");
   }
 
   public static getStubConfig(hass: HomeAssistant): object {

@@ -62,7 +62,7 @@ const CONFIG_PAGES: {
 
 type ConfigPages = typeof CONFIG_PAGES;
 
-@customElement("power-flow-card-plus-editor")
+@customElement("power-flow-card-plus-conditional-editor")
 export class PowerFlowCardPlusEditor extends LitElement implements LovelaceCardEditor {
   @property({ attribute: false }) public hass!: HomeAssistant;
   @state() private _config?: PowerFlowCardPlusConfig;
@@ -231,6 +231,6 @@ export class PowerFlowCardPlusEditor extends LitElement implements LovelaceCardE
 
 declare global {
   interface HTMLElementTagNameMap {
-    "power-flow-card-plus-editor": PowerFlowCardPlusEditor;
+    "power-flow-card-plus-conditional-editor": PowerFlowCardPlusEditor;
   }
 }
