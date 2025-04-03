@@ -28,6 +28,16 @@ export default [
         format: "es",
         inlineDynamicImports: true,
       },
+      {
+        file: "dist/power-flow-card-plus-conditional.js",
+        format: "es",
+        inlineDynamicImports: true,
+      },
+      {
+        file: "release/power-flow-card-plus-conditional.js",
+        format: "es",
+        inlineDynamicImports: true,
+      },
     ],
     plugins: [
       minifyHTML(),

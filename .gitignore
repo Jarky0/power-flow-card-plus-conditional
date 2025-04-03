@@ -20,7 +20,7 @@ test/screenshots/**/failed
 
 # build
 _site/
-/dist/
+# /dist/
 /out-tsc/
 /.rollup.cache/
 .tsbuildinfo
