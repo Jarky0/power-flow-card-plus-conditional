@@ -1,1 +1,3 @@
 target: dist/power-flow-card-plus-conditional.js
+commit: conditional-visibility-feature
+version: 0.1.0
