@@ -1,3 +1,5 @@
+import { PowerFlowCardPlusConditional } from '../power-flow-card-plus-conditional';
+
 interface RegisterCardParams {
   type: string;
   name: string;
@@ -11,6 +13,11 @@ export function registerCustomCard(params: RegisterCardParams) {
 
   // Make sure the type has the "custom:" prefix
   const type = params.type.startsWith("custom:") ? params.type : `custom:${params.type}`;
+
+  // Register the custom element if it's not already defined
+  if (!customElements.get(type)) {
+    customElements.define(type, PowerFlowCardPlusConditional);
+  }
 
   windowWithCards.customCards.push({
     ...params,
